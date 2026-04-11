@@ -1,17 +1,41 @@
 package demo.wrappers;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
+import org.openqa.selenium.*;
 
 public class Wrappers {
-    /*
-     * Write your selenium wrappers here
-     */
+
+    WebDriver driver;
+
+    public Wrappers(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public WebElement find(By locator) {
+        return driver.findElement(locator);
+    }
+
+    public void click(By locator) {
+        WebElement el = driver.findElement(locator);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", el);
+    }
+
+    public void sendKeys(By locator, String text) {
+        WebElement el = driver.findElement(locator);
+        el.clear();
+        el.sendKeys(text);
+    }
+
+    public String getText(By locator) {
+        return driver.findElement(locator).getText();
+    }
+
+    public void scrollBy(int px) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0," + px + ")");
+    }
+
+    public void scrollToBottom() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, document.documentElement.scrollHeight)");
+    }
 }
