@@ -18,29 +18,29 @@ public class TestCases extends ExcelDataProvider {
     Wrappers wp;
 
     @BeforeTest
-public void startBrowser() {
+    public void startBrowser() {
 
-    System.setProperty("java.util.logging.config.file", "logging.properties");
+        System.setProperty("java.util.logging.config.file", "logging.properties");
 
-    System.setProperty(
-        ChromeDriverService.CHROME_DRIVER_LOG_PROPERTY,
-        "build/chromedriver.log"
-    );
+        System.setProperty(
+                ChromeDriverService.CHROME_DRIVER_LOG_PROPERTY,
+                "build/chromedriver.log"
+        );
 
-    ChromeOptions options = new ChromeOptions();
-    LoggingPreferences logs = new LoggingPreferences();
+        ChromeOptions options = new ChromeOptions();
+        LoggingPreferences logs = new LoggingPreferences();
 
-    logs.enable(LogType.BROWSER, Level.ALL);
-    logs.enable(LogType.DRIVER, Level.ALL);
+        logs.enable(LogType.BROWSER, Level.ALL);
+        logs.enable(LogType.DRIVER, Level.ALL);
 
-    options.setCapability("goog:loggingPrefs", logs);
-    options.addArguments("--remote-allow-origins=*");
+        options.setCapability("goog:loggingPrefs", logs);
+        options.addArguments("--remote-allow-origins=*");
 
-    driver = new ChromeDriver(options);
-    driver.manage().window().maximize();
+        driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
 
-    wp = new Wrappers(driver);
-}
+        wp = new Wrappers(driver);
+    }
 
     @Test
     public void testCase01() {
@@ -59,24 +59,26 @@ public void startBrowser() {
         sa.assertAll();
     }
 
-   @Test
-public void testCase02() {
-    SoftAssert sa = new SoftAssert();
+    @Test
+    public void testCase02() {
+        SoftAssert sa = new SoftAssert();
 
-    driver.get("https://www.youtube.com/");
+        driver.get("https://www.youtube.com/");
 
-    //wp.scrollBy(1000);
+        //wp.scrollBy(1000);
+        wp.click(By.xpath("//yt-formatted-string[text()='Movies']"));
+        System.out.println("Clicked on the Films/Movies tab");
+        
 
-    wp.click(By.xpath("//yt-formatted-string[text()='Movies']"));
+        wp.scrollBy(1000);
 
-    wp.scrollBy(1000);
+        List<WebElement> movies = driver.findElements(By.xpath("//ytd-grid-movie-renderer"));
 
-    List<WebElement> movies = driver.findElements(By.xpath("//ytd-grid-movie-renderer"));
+        sa.assertTrue(movies.size() > 0);
 
-    sa.assertTrue(movies.size() > 0);
+        //sa.assertAll();
+    }
 
-    //sa.assertAll();
-}
     @Test
     public void testCase03() {
         SoftAssert sa = new SoftAssert();
@@ -134,49 +136,49 @@ public void testCase02() {
         sa.assertAll();
     }
 
-  @Test(dataProvider = "fetchData")
-public void testCase05(String searchItem) {
+    @Test(dataProvider = "fetchData")
+    public void testCase05(String searchItem) {
 
-    SoftAssert sa = new SoftAssert();
+        SoftAssert sa = new SoftAssert();
 
-    driver.get("https://www.youtube.com/");
+        driver.get("https://www.youtube.com/");
 
-    wp.sendKeys(By.name("search_query"), searchItem);
-    driver.findElement(By.name("search_query")).sendKeys(Keys.ENTER);
+        wp.sendKeys(By.name("search_query"), searchItem);
+        driver.findElement(By.name("search_query")).sendKeys(Keys.ENTER);
 
-    int totalViews = 0;
-    int scrollCount = 0;
+        int totalViews = 0;
+        int scrollCount = 0;
 
-    while (totalViews < 100000000 && scrollCount < 10) {
+        while (totalViews < 100000000 && scrollCount < 10) {
 
-        List<WebElement> views = driver.findElements(
-                By.xpath("//ytd-video-renderer//span[contains(text(),'views')]")
-        );
+            List<WebElement> views = driver.findElements(
+                    By.xpath("//ytd-video-renderer//span[contains(text(),'views')]")
+            );
 
-        for (WebElement view : views) {
+            for (WebElement view : views) {
 
-            String text = view.getText().toLowerCase();
+                String text = view.getText().toLowerCase();
 
-            try {
-                if (text.contains("m")) {
-                    double v = Double.parseDouble(text.split(" ")[0]);
-                    totalViews += (int) (v * 1000000);
-                } else if (text.contains("k")) {
-                    double v = Double.parseDouble(text.split(" ")[0]);
-                    totalViews += (int) (v * 1000);
+                try {
+                    if (text.contains("m")) {
+                        double v = Double.parseDouble(text.split(" ")[0]);
+                        totalViews += (int) (v * 1000000);
+                    } else if (text.contains("k")) {
+                        double v = Double.parseDouble(text.split(" ")[0]);
+                        totalViews += (int) (v * 1000);
+                    }
+                } catch (Exception e) {
                 }
-            } catch (Exception e) {
             }
+
+            wp.scrollToBottom();
+            scrollCount++;
         }
 
-        wp.scrollToBottom();
-        scrollCount++;
+        sa.assertTrue(totalViews >= 0);
+
+        sa.assertAll();
     }
-
-    sa.assertTrue(totalViews >= 0);
-
-    sa.assertAll();
-}
 
     @AfterTest
     public void endTest() {

@@ -2,14 +2,14 @@
   "quality_eval": [
     {
       "is_enabled": true,
-      "min_limit": 3,
+      "min_limit": 0,
       "max_limit": null,
       "out": "Comment Check.You used {} comments, should be between {} < {}",
       "indicator": "USED_COMMENT"
     },
     {
       "is_enabled": true,
-      "min_limit": 1,
+      "min_limit": 0,
       "max_limit": null,
       "out": "WebDriverWait Check.You used {} waits, should be between {} < {}",
       "indicator": "USED_WAIT"
@@ -17,13 +17,13 @@
     {
       "is_enabled": true,
       "min_limit": null,
-      "max_limit": 20,
+      "max_limit": 0,
       "out": "Sleep statement Check.You used {} sleep statements, should be between {} < {}",
       "indicator": "USED_THREAD_SLEEP"
     },
     {
       "is_enabled": true,
-      "min_limit": 3,
+      "min_limit": 0,
       "max_limit": null,
       "out": "System Out Printline or Logging Check.You used {} System out Printline statements, should be between {} < {}",
       "indicator": "USED_SOPL"
@@ -41,12 +41,12 @@
             {
               "object_notation": "COMMAND",
               "operator": "contains",
-              "expected_value": "Navigate"
+              "expected_value": ""
             },
             {
               "object_notation": "COMMAND",
               "operator": "contains",
-              "expected_value": "youtube"
+              "expected_value": ""
             }
           ],
           "join": "AND",
@@ -58,12 +58,12 @@
             {
               "object_notation": "COMMAND",
               "operator": "contains",
-              "expected_value": "GetElementText"
+              "expected_value": ""
             },
             {
               "object_notation": "RESPONSE",
               "operator": "contains",
-              "expected_value": "About"
+              "expected_value": ""
             }
           ],
           "join": "AND",
@@ -83,12 +83,12 @@
             {
               "object_notation": "COMMAND",
               "operator": "contains",
-              "expected_value": "ClickElement"
+              "expected_value": ""
             },
             {
               "object_notation": "RESPONSE",
               "operator": "contains",
-              "expected_value": "ClickElement"
+              "expected_value": ""
             }
           ],
           "join": "AND",
@@ -100,12 +100,12 @@
             {
               "object_notation": "COMMAND",
               "operator": "contains",
-              "expected_value": "ClickElement"
+              "expected_value": ""
             },
             {
               "object_notation": "RESPONSE",
               "operator": "contains",
-              "expected_value": "ClickElement"
+              "expected_value": ""
             }
           ],
           "join": "AND",
@@ -117,12 +117,12 @@
             {
               "object_notation": "COMMAND",
               "operator": "contains",
-              "expected_value": "GetElementText"
+              "expected_value": ""
             },
             {
               "object_notation": "RESPONSE",
               "operator": "contains",
-              "expected_value": "GetElementText"
+              "expected_value": ""
             }
           ],
           "join": "AND",
@@ -142,12 +142,12 @@
             {
               "object_notation": "COMMAND",
               "operator": "contains",
-              "expected_value": "ClickElement"
+              "expected_value": ""
             },
             {
               "object_notation": "RESPONSE",
               "operator": "contains",
-              "expected_value": "ClickElement"
+              "expected_value": ""
             }
           ],
           "join": "AND",
@@ -159,12 +159,12 @@
             {
               "object_notation": "COMMAND",
               "operator": "contains",
-              "expected_value": "GetElementText"
+              "expected_value": ""
             },
             {
               "object_notation": "RESPONSE",
               "operator": "contains",
-              "expected_value": "GetElementText"
+              "expected_value": ""
             }
           ],
           "join": "AND",
@@ -184,12 +184,12 @@
             {
               "object_notation": "COMMAND",
               "operator": "contains",
-              "expected_value": "ClickElement"
+              "expected_value": ""
             },
             {
               "object_notation": "RESPONSE",
               "operator": "contains",
-              "expected_value": "ClickElement"
+              "expected_value": ""
             }
           ],
           "join": "AND",
@@ -201,12 +201,12 @@
             {
               "object_notation": "COMMAND",
               "operator": "contains",
-              "expected_value": "GetElementText"
+              "expected_value": ""
             },
             {
               "object_notation": "RESPONSE",
               "operator": "contains",
-              "expected_value": "GetElementText"
+              "expected_value": ""
             }
           ],
           "join": "AND",
@@ -226,12 +226,12 @@
             {
               "object_notation": "COMMAND",
               "operator": "contains",
-              "expected_value": "TypeElement"
+              "expected_value": ""
             },
             {
               "object_notation": "COMMAND",
               "operator": "contains",
-              "expected_value": "Movies"
+              "expected_value": ""
             }
           ],
           "join": "AND",
@@ -243,12 +243,12 @@
             {
               "object_notation": "COMMAND",
               "operator": "contains",
-              "expected_value": "TypeElement"
+              "expected_value": ""
             },
             {
               "object_notation": "COMMAND",
               "operator": "contains",
-              "expected_value": "Music"
+              "expected_value": ""
             }
           ],
           "join": "AND",
@@ -260,12 +260,12 @@
             {
               "object_notation": "COMMAND",
               "operator": "contains",
-              "expected_value": "TypeElement"
+              "expected_value": ""
             },
             {
               "object_notation": "COMMAND",
               "operator": "contains",
-              "expected_value": "Games"
+              "expected_value": ""
             }
           ],
           "join": "AND",

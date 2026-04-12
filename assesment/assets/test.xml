@@ -2,7 +2,8 @@
 <checkstyle version="8.45">
 <file name="C:\Users\ritv4\Desktop\Crio\ritvikchouhan77-ME_QA_XYOUTUBE_SEARCH\src\test\java\demo\TestCases.java">
 <error line="68" severity="error" message="USED_COMMENT" source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"/>
-<error line="78" severity="error" message="USED_COMMENT" source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"/>
+<error line="70" severity="error" message="USED_SOPL" source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"/>
+<error line="79" severity="error" message="USED_COMMENT" source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"/>
 </file>
 <file name="C:\Users\ritv4\Desktop\Crio\ritvikchouhan77-ME_QA_XYOUTUBE_SEARCH\src\test\java\demo\utils\ExcelDataProvider.java">
 </file>
